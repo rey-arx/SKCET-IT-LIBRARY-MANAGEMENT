@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import firebase from '../utils/firebase';
-import {db} from "../utils/firebase"
+import {db} from "../utils/firebase";
 import {collection,addDoc,Timestamp} from 'firebase/firestore';
 
 const Forms = () => {
