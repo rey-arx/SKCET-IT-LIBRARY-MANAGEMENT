@@ -10,18 +10,20 @@
     <link rel="stylesheet" href="stylesidenav.css">
 
 </head>
-<body>
+<body class="sb-nav-fixed">
+
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-          <p>oiio</p>
+        <!-- Navbar Brand-->
         <a class="navbar-brand ps-3" href="index.php">Library System</a>
-       
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><svg class="svg-inline--fa fa-bars fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path></svg><!-- <i class="fas fa-bars"></i> Font Awesome fontawesome.com --></button>
         <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
             
         </form>
-   
+        <!-- Navbar-->
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><svg class="svg-inline--fa fa-user fa-w-14 fa-fw" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path></svg></a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><svg class="svg-inline--fa fa-user fa-w-14 fa-fw" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path></svg><!-- <i class="fas fa-user fa-fw"></i> Font Awesome fontawesome.com --></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="profile.php">Profile</a></li>
                     <li><a class="dropdown-item" href="setting.php">Setting</a></li>
@@ -31,36 +33,131 @@
         </ul>
     </nav>
 
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <a class="nav-link" href="category.php">Category</a>
+                        <a class="nav-link" href="author.php">Author</a>
+                        <a class="nav-link" href="location_rack.php">Location Rack</a>
+                        <a class="nav-link" href="book.php">Book</a>
+                        <a class="nav-link" href="user.php">User</a>
+                        <a class="nav-link" href="issue_book.php">Issue Book</a>
+                        <a class="nav-link" href="http://demo.webslesson.info/scm/source-code.php?code=013a4844ddc90a3f8df5b04c3ddac39b">Download Source Code</a>
+                        <a class="nav-link" href="logout.php">Logout</a>
 
-    
-    <nav class="navbar navbar-expand d-flex flex-column align-item-start active-nav" id="sidebar">
-        <a href="#" class="navbar-brand text-light mt-5">
-            <div class="display-5 font-weight-bold">THANOS</div>
-        </a>
-        <ul class="navbar-nav d-flex flex-column mt-5 w-100">
-            <li class="nav-item w-100">
-                <a href="#" class="nav-link text-light pl-4">Home</a>
-            </li>
-            <li class="nav-item w-100">
-                <a href="#" class="nav-link text-light pl-4">About</a>
-            </li>
-            <li class="nav-item w-100">
-                <a href="#" class="nav-link text-light pl-4">Blog</a>
-            </li>
-            <li class="nav-item dropdown w-100">
-                <a href="#" class="nav-link dropdown-toggle text-light pl-4" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">Service</a>
-                <ul class="dropdown-menu w-100" aria-labelledby="navbarDropdown">
-                    <li><a href="#" class="dropdown-item text-light pl-4 p-2">Service 01</a></li>
-                    <li><a href="#" class="dropdown-item text-light pl-4 p-2">Service 02</a></li>
-                    <li><a href="#" class="dropdown-item text-light pl-4 p-2">Service 03</a></li>
-                </ul>
-            </li>
-            <li class="nav-item w-100">
-                <a href="#" class="nav-link text-light pl-4">Contact</a>
-            </li>
-        </ul>
-    </nav>    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.min.js" integrity="sha384-5h4UG+6GOuV9qXh6HqOLwZMY4mnLPraeTrjT5v07o347pj6IkfuoASuGBhfDsp3d" crossorigin="anonymous"></script>
+                    </div>
+                </div>
+                <div class="sb-sidenav-footer">
+                   
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="mt-3 mb-3">
+                    <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- webslesson_sidebarrightsec_AdSense1_1x1_as -->
+                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4529508631166774" data-ad-host="ca-host-pub-1556223355139109" data-ad-host-channel="L0001" data-ad-slot="7056856732" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                    <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
 
-</body>
+                
+<div class="container-fluid py-4">
+<h1 class="mb-5">Dashboard</h1>
+<div class="row">
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-primary text-white mb-4">
+            <div class="card-body">
+                <h1 class="text-center">67</h1>
+                <h5 class="text-center">Total Book Issue</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-warning text-white mb-4">
+            <div class="card-body">
+                <h1 class="text-center">66</h1>
+                <h5 class="text-center">Total Book Returned</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-danger text-white mb-4">
+            <div class="card-body">
+                <h1 class="text-center">0</h1>
+                <h5 class="text-center">Total Book Not Return</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-success text-white mb-4">
+            <div class="card-body">
+                <h1 class="text-center"><span style="font-family: DejaVu Sans;">₹</span>&nbsp;0</h1>
+                <h5 class="text-center">Total Fines Received</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-success text-white mb-4">
+            <div class="card-body">
+                <h1 class="text-center">17</h1>
+                <h5 class="text-center">Total Book</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-danger text-white mb-4">
+            <div class="card-body">
+                <h1 class="text-center">18</h1>
+                <h5 class="text-center">Total Author</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-warning text-white mb-4">
+            <div class="card-body">
+                <h1 class="text-center">4</h1>
+                <h5 class="text-center">Total Category</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-primary text-white mb-4">
+            <div class="card-body">
+                <h1 class="text-center">11</h1>
+                <h5 class="text-center">Total Location Rack</h5>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+                            </main>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright © Library Management System 2022</div>
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            ·
+                            <a href="#">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+            
+    <script src="http://demo.webslesson.info/library-management-system/asset/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="http://demo.webslesson.info/library-management-system/asset/js/scripts.js"></script>
+    <script src="http://demo.webslesson.info/library-management-system/asset/js/simple-datatables@latest.js" crossorigin="anonymous"></script>
+    <script src="http://demo.webslesson.info/library-management-system/asset/js/datatables-simple-demo.js"></script>
+
+
+
+<div id="torrent-scanner-popup" style="display: none;"></div></body>
 </html>

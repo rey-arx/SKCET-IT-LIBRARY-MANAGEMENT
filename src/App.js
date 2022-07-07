@@ -11,9 +11,8 @@ import Topnav from './components/Topnav';
 function App() {
   return (
     <div className="App">
-      <Topbar />
       <Sidebar />
-    
+      
       
     
       

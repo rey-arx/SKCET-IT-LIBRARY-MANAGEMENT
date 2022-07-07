@@ -1,28 +1,51 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+.topnav {
+    background-color: #7952b3;
+    overflow: hidden;
+  }
+  
+  /* Style the links inside the navigation bar */
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  /* Change the color of links on hover */
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  /* Add a color to the active/current link */
+  .topnav a.active {
+    background-color: #04AA6D;
+    color: white;
+  }
 
 body {
     min-height: 100vh;
     background-color: #fff;
 }
 
+
 .navbar {
     width: 250px;
     height: 100vh;
     position: fixed;
-    margin-left: -300px;
+    
+    
     background-color: #7952b3;
-    transition: 0.4s;
+    
 }
 
 .nav-link {
     font-size: 1.25em;
 }
 
-.nav-link:active,
+
 .nav-link:focus,
 .nav-link:hover {
     background-color: #ffffff26;
@@ -45,16 +68,11 @@ body {
 
 /* for navbar */
 
-.active-nav {
-    margin-left: 0;
-}
+
 
 
 /* for main section */
 
-.active-cont {
-    margin-left: 250px;
-}
 
 #menu-btn {
     background-color: #7952b3;
