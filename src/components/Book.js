@@ -2,7 +2,10 @@ import React from "react";
 import Addbook from "./Addbook";
 import './stylesmain.css' 
 
-const Book = () => {
+const Book = (props) => {
+    const Addbk = () =>{
+        props.setPage = (<Addbook />)
+    }
   return (
     <div>
         <h1>Book Management</h1>
@@ -20,7 +23,7 @@ const Book = () => {
                 Book Management
               </div>
               <div class="col col-md-6" align="right">
-                <button class="btn btn-success btn-sm" onClick={()=>(<Addbook />)}>
+                <button class="btn btn-success btn-sm" onClick={() =>props.setPage(<Addbook />)}>
                   Add
                 </button>
               </div>

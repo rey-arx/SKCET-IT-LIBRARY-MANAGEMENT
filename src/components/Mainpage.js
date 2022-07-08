@@ -10,6 +10,7 @@ import Rack from './Rack';
 import Book from './Book';
 const Mainpage = () => {
     const [page,setPage] = useState(<Dashboard />)
+    
     const rey = "Hii";
   return (
     <div>
@@ -41,7 +42,8 @@ const Mainpage = () => {
                                 <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<Category />)}>Category</a>
                                 <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<Author />)}>Author</a>
                                 <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<Rack />)}>Location Rack</a>
-                                <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<Book />)}>Book</a>
+                                <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<Book setPage={setPage}/>)}>Book</a>
+                                <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<Addbook setPage={setPage}/>)}>Add a new Book</a>
                                 <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<IssueBook />)}>Issue Book</a>
                                 <a class="nav-link" href="logout.php">Logout</a>
     
