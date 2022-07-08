@@ -7,6 +7,7 @@ import Addbook from './Addbook';
 import Category from './Category';
 import Author from './Author';
 import Rack from './Rack';
+import Book from './Book';
 const Mainpage = () => {
     const [page,setPage] = useState(<Dashboard />)
     const rey = "Hii";
@@ -40,7 +41,7 @@ const Mainpage = () => {
                                 <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<Category />)}>Category</a>
                                 <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<Author />)}>Author</a>
                                 <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<Rack />)}>Location Rack</a>
-                                <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<Addbook />)}>Book</a>
+                                <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<Book />)}>Book</a>
                                 <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<IssueBook />)}>Issue Book</a>
                                 <a class="nav-link" href="logout.php">Logout</a>
     
@@ -54,6 +55,7 @@ const Mainpage = () => {
                 <div id="layoutSidenav_content">
     <main>	
         <div class="container-fluid py-4">
+       
        {page}
         </div>
     
@@ -64,8 +66,8 @@ const Mainpage = () => {
                                 <div class="text-muted">Copyright © Library Management System 2022</div>
                                 <div>
                                     <a href="#">Privacy Policy</a>
-                                    ·
-                                    <a href="#">Terms &amp; Conditions</a>
+                                    
+                                    <a href="#">Terms Conditions</a>
                                 </div>
                             </div>
                         </div>
