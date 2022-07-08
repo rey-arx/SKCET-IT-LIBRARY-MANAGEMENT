@@ -1,7 +1,15 @@
-import React from 'react'
+import React , {useState} from 'react'
 import Forms from './Forms'
 import './stylesmain.css' 
+import Dashboard from './Dashboard';
+import IssueBook from './IssueBook';
+import Addbook from './Addbook';
+import Category from './Category';
+import Author from './Author';
+import Rack from './Rack';
 const Mainpage = () => {
+    const [page,setPage] = useState(<Dashboard />)
+    const rey = "Hii";
   return (
     <div>
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -29,13 +37,11 @@ const Mainpage = () => {
                     <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                         <div class="sb-sidenav-menu">
                             <div class="nav">
-                                <a class="nav-link" href="category.php">Category</a>
-                                <a class="nav-link" href="author.php">Author</a>
-                                <a class="nav-link" href="location_rack.php">Location Rack</a>
-                                <a class="nav-link" href="book.php">Book</a>
-                                <a class="nav-link" href="user.php">User</a>
-                                <a class="nav-link" href="issue_book.php">Issue Book</a>
-                                <a class="nav-link" href="http://demo.webslesson.info/scm/source-code.php?code=013a4844ddc90a3f8df5b04c3ddac39b">Download Source Code</a>
+                                <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<Category />)}>Category</a>
+                                <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<Author />)}>Author</a>
+                                <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<Rack />)}>Location Rack</a>
+                                <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<Addbook />)}>Book</a>
+                                <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<IssueBook />)}>Issue Book</a>
                                 <a class="nav-link" href="logout.php">Logout</a>
     
                             </div>
@@ -48,7 +54,7 @@ const Mainpage = () => {
                 <div id="layoutSidenav_content">
     <main>	
         <div class="container-fluid py-4">
-    	<Forms />
+       {page}
         </div>
     
     </main>
