@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import firebase from "../utils/firebase";
 import { db } from "../utils/firebase";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import './Style.css';
+
 
 import {
   collection,
