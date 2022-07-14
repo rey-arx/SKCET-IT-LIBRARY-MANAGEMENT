@@ -15,20 +15,21 @@
     border: 1px solid #ffffff;
     text-align: left;
     padding: 8px;
-    font-size: 32px;
+    font-size: 100%;
+    color : white;
   }
   
   th {
-    background-color: rgb(117, 201, 250);
+    background-color: rgb(33, 37, 41);
   }
   
   td {
-    background-color: rgb(205, 235, 253);
+    background-color: rgb(74, 77, 81);
   }
   
   form {
     display: flex;
-    gap: 5px;
+    gap: 0%;
   }
   
   form td:last-child {
@@ -37,5 +38,11 @@
   }
   
   form * {
-    font-size: 28px;
+    font-size: 100%;
+    align-content:center;
   }
+  
+  input[type="text"] {
+    height: 100%;
+    width: 100%;
+    }

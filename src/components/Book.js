@@ -1,31 +1,45 @@
-import React ,{useState, useEffect}from "react";
-import { db } from "../utils/firebase";
-import {
-  collection,
-  query,
-  addDoc,
-  updateDoc,
-  orderBy,
-  doc,
-  deleteDoc,
-  onSnapshot,
-  Timestamp,
-  setDoc,
-} from "firebase/firestore";
+import React, { useState ,useEffect, Fragment} from "react";
 import Addbook from "./Addbook";
-import './stylesmain.css' 
-import './table.css' 
+import './stylesmain.css' ;
+import {db} from '../utils/firebase';
+import { query,collection,orderBy,onSnapshot } from "firebase/firestore";
+import './table.css'
+import ReadOnlyRow from "./ReadOnlyRow";
+import EditableRow from "./EditableRow";
 
 const Book = (props) => {
+  //For editing The Existing values
 
-  const [data,setData] = useState("");
-  const [book, getBook] = useState([]);
+  const [Author, setAuthor] = useState("");
+	const [Book_id, setBook_id] = useState("");
+	const [Book_name, setBook_name] = useState("");
+	const [category, setCategory] = useState("");
+	const [ISBN, setISBN] = useState("");
+	const [rack,setRack] = useState("");
+	const [copies,setCopies] = useState(0);
+	const [edition,setEdition] = useState("");
+  const [book_item, setbook_item] = useState([]);
 
-
+  const [editBook,seteditBook] = useState(null);
+  //Edit state over
+  //Function for edit
+ 
+  const handleEdit = (e, bID, banme, auth, cate, edi, loca, isbn, copi) => {
+    seteditBook(e);
+    setBook_id(bID);
+    setBook_name(banme);
+    setAuthor(auth);
+    setCategory(cate);
+    setEdition(edi);
+    setRack(loca);
+    setISBN(isbn);
+    setCopies(copi);
+  };
+  //getting list
   useEffect(() => {
-    const q = query(collection(db, "tasks"), orderBy("created", "desc"));
+    const q = query(collection(db, "Book_details"), orderBy("Created", "desc"));
     onSnapshot(q, (querySnapshot) => {
-      getBook(
+      setbook_item(
         querySnapshot.docs.map((doc) => ({
           id: doc.id,
           data: doc.data(),
@@ -33,8 +47,10 @@ const Book = (props) => {
       );
     });
   }, []);
+  //getting list ends here
+
   
-  
+
   return (
     <div>
         <h1>Book Management</h1>
@@ -55,28 +71,59 @@ const Book = (props) => {
                 <button class="btn btn-success btn-sm" onClick={() =>props.setPage(<Addbook />)}>
                   Add
                 </button>
-              </div>
             </div>
           </div>
         </div>
         
-        <table>
+          <table>
+            
           <thead>
             <tr>
-              <th>Title</th>
-              <th>Completed</th>
-              <th>created</th>
+              <th>Book_ID</th>
+              <th>Book_Name</th>
+              <th>Author</th>
+              <th>Category</th>
+              <th>Edition</th>
+              <th>Location rack</th>
+              <th>ISBN</th>
+              <th>no_of_copies</th>
+              <th>Action</th>
+              
+              
             </tr>
           </thead>
-          <tbody>
-            {book.map((books) => (
-              <tr>
-                <td>{books.data.title}</td>
-                
-              </tr>
-            ))}
-          </tbody>
-        </table>
+            <tbody>
+              {book_item.map((books) =>(
+            <Fragment >
+              {editBook === books.id ? (
+                <EditableRow 
+                setBook_id={setBook_id}
+                books={books}
+                setBook_name={setBook_name}
+                setAuthor={setAuthor}
+                setCategory={setCategory}
+                setEdition={setEdition}
+                setRack={setRack}
+                setISBN={setISBN}
+                setCopies={setCopies}
+                Book_id={Book_id}
+                Book_name={Book_name}
+                Author={Author}
+                category={category}
+                edition={edition}
+                rack={rack}
+                ISBN={ISBN}
+                copies={copies}
+                editBook={editBook}
+                seteditBook={seteditBook} /> ) : (
+                <ReadOnlyRow books={books} handleEdit ={handleEdit }/>)}
+            </Fragment>
+            
+              ))}
+            </tbody>
+          
+          </table>
+        </div>
       
     </div>
   );
