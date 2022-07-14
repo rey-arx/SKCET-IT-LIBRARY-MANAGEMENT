@@ -2,7 +2,7 @@ import React, { useState ,useEffect, Fragment} from "react";
 import Addbook from "./Addbook";
 import './stylesmain.css' ;
 import {db} from '../utils/firebase';
-import { query,collection,orderBy,onSnapshot } from "firebase/firestore";
+import { query,collection,orderBy,onSnapshot ,doc,setDoc} from "firebase/firestore";
 import './table.css'
 import ReadOnlyRow from "./ReadOnlyRow";
 import EditableRow from "./EditableRow";
@@ -23,7 +23,7 @@ const Book = (props) => {
   const [editBook,seteditBook] = useState(null);
   //Edit state over
   //Function for edit
- 
+
   const handleEdit = (e, bID, banme, auth, cate, edi, loca, isbn, copi) => {
     seteditBook(e);
     setBook_id(bID);
@@ -49,6 +49,22 @@ const Book = (props) => {
   }, []);
   //getting list ends here
 
+  //after edit updating to firebase
+  async function updateDocument(editBook) {
+    const itemRef = doc(db, "Book_details", editBook);
+    setDoc(itemRef, {
+      Author: Author,
+      Book_id:Book_id,
+      Book_name:Book_name,
+      category:category,
+      ISBN:ISBN,
+      rack:rack,
+      copies:copies,
+      edition:edition,
+      book_item:book_item,
+      
+    });
+  }
   
 
   return (
@@ -88,6 +104,7 @@ const Book = (props) => {
               <th>ISBN</th>
               <th>no_of_copies</th>
               <th>Action</th>
+              <th>Action2</th>
               
               
             </tr>

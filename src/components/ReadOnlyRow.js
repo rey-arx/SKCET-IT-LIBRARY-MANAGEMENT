@@ -1,6 +1,23 @@
 import React from 'react'
 import './table.css'
+import {db} from '../utils/firebase';
+import { query,collection,orderBy,onSnapshot ,doc,setDoc,deleteDoc} from "firebase/firestore";
+
 const ReadOnlyRow = (props) => {
+
+  const handleDelete = async (id) => {
+    const taskDocRef = doc(db, 'Book_details', id)
+    try{
+      await deleteDoc(taskDocRef)
+    } catch (err) {
+      alert(err)
+    }
+    renderBook();
+  };
+  const renderBook=()=>
+  {
+  };
+
   return (
     <tr>
     <td>{props.books.data.Book_ID}</td>
@@ -22,6 +39,10 @@ const ReadOnlyRow = (props) => {
               props.books.data.ISBN,
               props.books.data.No_of_copies)}>Edit</button>
       </td>
+      <td>
+        <button type="button" onClick={() => handleDelete(props.books.id)}>delete</button>
+      </td>
+
       </tr>
   )
 }
