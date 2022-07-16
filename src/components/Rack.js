@@ -35,32 +35,22 @@ const Rack = () => {
         <table>
         <thead>
             <tr>
-             
+              <th>Book Name</th>
               <th>Location rack</th>
-              <th>ISBN</th>
+              
             </tr>
           </thead>
             <tbody>
+              
               {book_item.map((books) =>(
             <tr>
+              <td>{books.data.Book_name}</td>
               <td>{books.data.Location_rack}</td>
-              <td>{books.data.ISBN}</td>
             </tr>
               ))}
             </tbody>
           
           </table>
-        
-
-
-
-
-
-
-
-
-
-
     </div>
   )
 }

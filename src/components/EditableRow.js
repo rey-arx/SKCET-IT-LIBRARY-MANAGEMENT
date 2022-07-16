@@ -1,57 +1,40 @@
 import React from "react";
-import "./table.css";
-import {
-  collection,
-  query,
-  addDoc,
-  updateDoc,
-  orderBy,
-  doc,
-  deleteDoc,
-  onSnapshot,
-  Timestamp,
-  setDoc,
-} from "firebase/firestore";
 import { db } from "../utils/firebase";
+import { doc,updateDoc } from "firebase/firestore";
+import { Timestamp } from "firebase/firestore";
+import "./table.css";
+
 
 const EditableRow = (props) => {
-  //For editing The Existing values
-  
-  //Edit state over
-  //Function for edit
-    //updating a todo
-    const handleUpdate = async (e) => {
-      e.preventDefault()
-      const taskDocRef = doc(db, 'Book_details', props.editBook)
-      try{
-        await updateDoc(taskDocRef, {
-          Book_ID: props.Book_id,
-          Book_name: props.Book_name,
-          Author: props.Author,
-          Category: props.category,
-          Edition: props.edition,
-          Location_rack: props.rack,
-          ISBN: props.ISBN,
-          No_of_copies: props.copies,
-          Created: Timestamp.now()
-        })
 
-      } catch (err) {
-        alert(err)
+      //updating a todo
+      const handleUpdate = async (e) => {
+        e.preventDefault()
+        const taskDocRef = doc(db, 'Book_details', props.editBook)
+        try{
+          await updateDoc(taskDocRef, {
+            Book_ID: props.Book_id,
+            Book_name: props.Book_name,
+            Author: props.Author,
+            Category: props.category,
+            Edition: props.edition,
+            Location_rack: props.rack,
+            ISBN: props.ISBN,
+            No_of_copies: props.copies,
+            Created: Timestamp.now()
+          })
+
+        } catch (err) {
+          alert(err)
+        }
+        props.setEditbook("");    
       }
-      props.seteditBook("");    
-    }
-    const Cancelupdate = () =>{
-      props.setBook_id(props.books.data.Book_ID);
-      props.setBook_name(props.books.data.Book_name);
-      props.setAuthor(props.books.data.Author);
-      props.setCategory(props.books.data.Category);
-      props.setEdition(props.books.data.Edition);
-      props.setRack(props.books.data.Location_rack);
-      props.setISBN(props.books.data.ISBN);
-      props.setCopies(props.books.data.No_of_copies);
-    };
+     
+  //ends here
 
+
+
+ 
   return (
     <tr>
       <td>
@@ -113,9 +96,9 @@ const EditableRow = (props) => {
       <td>
         <button onClick={(event)=> handleUpdate(event)} >save</button>
       </td>
-      <td><button onClick={(event)=> handleUpdate(event)} >Cancel</button> 
-        </td>
-
+      <td>
+        <button onClick={()=> props.setEditbook("")} >Calcel</button>
+      </td>
     </tr>
   );
 };
