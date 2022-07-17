@@ -201,6 +201,7 @@ const [searchField, setSearchField] = useState("");
           </thead>
           <tbody>
             {filteredBooks.map((filtered)=>(
+              <Fragment>
               <tr>
               <td>{filtered.Book_ID}</td>
               <td>{filtered.Book_name}</td>
@@ -216,7 +217,7 @@ const [searchField, setSearchField] = useState("");
               <td>  
               <button>delete</button></td>
             </tr>
-
+            </Fragment>
             ))}
           
           </tbody>

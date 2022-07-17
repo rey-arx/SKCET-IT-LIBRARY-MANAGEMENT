@@ -6,12 +6,12 @@ import "./table.css";
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 
-const EditableRow = (props) => {
+const SEditableRow = (props) => {
 
       //updating a todo
       const handleUpdate = async (e) => {
         e.preventDefault()
-        const taskDocRef = doc(db, 'Book_details', props.editBook)
+        const taskDocRef = doc(db, 'Book_details', props.currentid)
         try{
           await updateDoc(taskDocRef, {
             Book_ID: props.Book_id,
@@ -28,7 +28,7 @@ const EditableRow = (props) => {
         } catch (err) {
           alert(err)
         }
-        props.setEditbook("");    
+        props.setBook_id("");    
       }
      
   //ends here
@@ -98,10 +98,10 @@ const EditableRow = (props) => {
         <button onClick={(event)=> handleUpdate(event)} class="btn btn-secondary  btn-sm"  >save</button>
       </td>
       <td>
-        <button onClick={()=> props.setEditbook("")}class="btn btn-secondary  btn-sm" >Calcel</button>
+        <button onClick={()=> props.setBook_id("")}class="btn btn-secondary  btn-sm" >Cancel</button>
       </td>
     </tr>
   );
 };
 
-export default EditableRow;
+export default SEditableRow;
