@@ -80,7 +80,11 @@ const [searchField, setSearchField] = useState("");
    filteredBooks = book_item1.filter(
     Sbook => {
       return (
-        Sbook.Book_name.toLowerCase().includes(searchField.toLowerCase())
+        Sbook.Book_name.toLowerCase().includes(searchField.toLowerCase())||
+        Sbook.Book_ID.toLowerCase().includes(searchField.toLowerCase())||
+        Sbook.Author.toLowerCase().includes(searchField.toLowerCase())
+
+
       );
     }
   );
