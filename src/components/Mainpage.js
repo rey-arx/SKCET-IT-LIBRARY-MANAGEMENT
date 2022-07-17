@@ -11,6 +11,8 @@ import Book from './Book';
 import {Helmet} from "react-helmet";
 import navlogo from './lines.png';
 import IssueBook_details from './IssueBook_details';
+import { auth } from '../utils/firebase';
+
 const Mainpage = () => {
     const [page,setPage] = useState(<Dashboard />)
 
@@ -30,7 +32,8 @@ const Mainpage = () => {
         }
         
     }
- 
+
+
   return (
     <div class={visiblesidebar}>
         
@@ -75,7 +78,7 @@ const Mainpage = () => {
                                 <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<IssueBook setPage={setPage} />)}>Issued Book</a>
                                 <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<IssueBook_details setPage={setPage} />)}>Issue book </a>
 
-                                <a class="nav-link" href="logout.php">Logout</a>
+                                <a class="nav-link" href="/" onClick={()=> auth.signOut()} >Logout</a>
     
                             </div>
                         </div>
