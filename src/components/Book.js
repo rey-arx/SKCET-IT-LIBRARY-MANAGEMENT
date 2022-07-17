@@ -55,26 +55,7 @@ const Book = (props) => {
   }, []);
   //ends here
 
-
-  const searchBook=(e)=>{
-    
-    /*const collectionref=collection(db , "Book_details");
-    const q = query(collectionref , orderBy("Created","desc"));      //
-    onSnapshot(q,(snapshot)=>
-    setbook_item(snapshot.docs.map(doc=>({...doc.data(),id:doc.id,key:doc.id})))
-    );*/
-    //if(e == book_item.map((d) => {d.data.Book_name} ))
-    //{
-      //console.log(e);
-    //}
-
-
-
-      
-     
-
-  }
-
+  /*
   const search = [];
   book_item.map((d) => search.push(d.data.Book_name));
   console.log(search)
@@ -89,6 +70,35 @@ const Book = (props) => {
      
     }
   }
+*/
+
+//Searching stars...
+const [searchField, setSearchField] = useState("");
+
+  let filteredBooks = [];
+  const book_item1 =[];
+  book_item.map((d)=> book_item1.push(d.data));
+   filteredBooks = book_item1.filter(
+    Sbook => {
+      return (
+        Sbook.Book_name.toLowerCase().includes(searchField.toLowerCase())
+      );
+    }
+  );
+
+  const handleChange = e => {
+    console.log(e.target.value);
+    setSearchField(e.target.value);
+    
+  };
+  console.log(searchField);
+  /*function searchList() {
+    return (
+      <Scroll>
+        <SearchList filteredPersons={filteredBooks} />
+      </Scroll>
+    );
+  }*/
 
 
   return (
@@ -107,61 +117,102 @@ const Book = (props) => {
             <div class="col col-md-6">Book Management</div>
           </div>
         </div>
-        <div class="dataTable-search"><input onChange={(e)=>setsearchValue(e.target.value)} class="dataTable-input" placeholder="Search..." type="text"/></div>
+        <div class="dataTable-search"><input onChange={handleChange} class="dataTable-input" placeholder="Search..." type="text"/></div>
       </div>
       
        <div>
+        {
+         searchField === "" ? (
+         <table>
+          <thead>
+            <tr>
+              <th>Book_ID</th>
+              <th>Book_Name</th>
+              <th>Author</th>
+              <th>Category</th>
+              <th>Edition</th>
+              <th>Location rack</th>
+              <th>ISBN</th>
+              <th>no_of_copies</th>
+              <th>Actions</th>
+              <th>dele</th>
+            </tr>
+          </thead>
+          <tbody>
+            {book_item.map((book) => (
+              <Fragment>
+                {editBook === book.id ? (
+                  <EditableRow key={book}
+                    setBook_id={setBook_id}
+                    setBook_name={setBook_name}
+                    setAuthor={setAuthor}
+                    setCategory={setCategory}
+                    setEdition={setEdition}
+                    setRack={setRack}
+                    setISBN={setISBN}
+                    setCopies={setCopies}
+                    Book_id={Book_id}
+                    Book_name={Book_name}
+                    Author={Author}
+                    category={category}
+                    edition={edition}
+                    rack={rack}
+                    ISBN={ISBN}
+                    copies={copies}
+                    editBook={editBook}
+                    setEditbook={setEditbook}
+                  />
+                ) : (
+                  <ReadOnlyBook key={book}
+                    book={book}
+                    handleEdit={handleEdit}
+                    
+                  />
+                )}
+              </Fragment>
+            ))}
+          </tbody>
+        </table>) : (
           <table>
-            <thead>
+          <thead>
+            <tr>
+              <th>Book_ID</th>
+              <th>Book_Name</th>
+              <th>Author</th>
+              <th>Category</th>
+              <th>Edition</th>
+              <th>Location rack</th>
+              <th>ISBN</th>
+              <th>no_of_copies</th>
+              <th>Actions</th>
+              <th>dele</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredBooks.map((filtered)=>(
               <tr>
-                <th>Book_ID</th>
-                <th>Book_Name</th>
-                <th>Author</th>
-                <th>Category</th>
-                <th>Edition</th>
-                <th>Location rack</th>
-                <th>ISBN</th>
-                <th>no_of_copies</th>
-                <th>Actions</th>
-                <th>dele</th>
-              </tr>
-            </thead>
-            <tbody>
-              {book_item.map((book) => (
-                <Fragment>
-                  {editBook === book.id ? (
-                    <EditableRow key={book}
-                      setBook_id={setBook_id}
-                      setBook_name={setBook_name}
-                      setAuthor={setAuthor}
-                      setCategory={setCategory}
-                      setEdition={setEdition}
-                      setRack={setRack}
-                      setISBN={setISBN}
-                      setCopies={setCopies}
-                      Book_id={Book_id}
-                      Book_name={Book_name}
-                      Author={Author}
-                      category={category}
-                      edition={edition}
-                      rack={rack}
-                      ISBN={ISBN}
-                      copies={copies}
-                      editBook={editBook}
-                      setEditbook={setEditbook}
-                    />
-                  ) : (
-                    <ReadOnlyBook key={book}
-                      book={book}
-                      handleEdit={handleEdit}
-                      
-                    />
-                  )}
-                </Fragment>
-              ))}
-            </tbody>
-          </table>
-       
+              <td>{filtered.Book_ID}</td>
+              <td>{filtered.Book_name}</td>
+              <td>{filtered.Author}</td>
+              <td>{filtered.Category}</td>
+              <td>{filtered.Edition}</td>
+              <td>{filtered.Location_rack}</td>
+              <td>{filtered.ISBN}</td>
+              <td>{filtered.No_of_copies}</td>
+              <td>
+                <button>Edit</button>
+              </td>
+              <td>  
+              <button>delete</button></td>
+            </tr>
+
+            ))}
+          
+          </tbody>
+        </table>
+        ) 
+        }
+          
       </div>
     </div>
   );

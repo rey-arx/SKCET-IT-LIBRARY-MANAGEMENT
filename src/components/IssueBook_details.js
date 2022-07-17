@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import IssueBook from "./IssueBook";
 import { db } from "../utils/firebase";
 import { addDoc, collection, Timestamp } from "firebase/firestore";
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 const IssueBook_details = (props) => {
   const [Book_name, setBook_name] = useState("");
@@ -10,6 +11,7 @@ const IssueBook_details = (props) => {
   const [stuname, setStuname] = useState("");
   const [department, setDepartment] = useState("");
   const [status, setStatus] = useState("not returned");
+
 
   //addingn list to the firebase
   const handleIssue = async () => {
@@ -21,11 +23,15 @@ const IssueBook_details = (props) => {
       stuname: stuname,
       department: department,
       status: status,
-      Issue_date: Timestamp.now(),
-      BtColor : "btn-warning",
+      Issue_date: Timestamp.now().toDate().toDateString(),
+      Return_date:"",
+      fineAmount:0,
+      BtColor : "btn btn-warning",
     });
-    props.setpage(
+    props.setPage(
       <IssueBook
+
+
       />
     );
   };
@@ -117,8 +123,8 @@ const IssueBook_details = (props) => {
             <div class="mt-4 mb-3 text-center">
               <button
                 name="add_book"
-                class="btn btn-success"
-                value="Add"
+                class="btn btn-warning"
+               
                 onClick={()=>handleIssue()}
               >
                 Issue

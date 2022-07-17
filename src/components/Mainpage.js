@@ -72,8 +72,8 @@ const Mainpage = () => {
                                 <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<Rack />)}>Location Rack</a>
                                 <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<Book setPage={setPage} />)}>Book</a>
                                 <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<Addbook setPage={setPage} />)}>Add Book</a>
-                                <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<IssueBook_details setPage={setPage} />)}>Issue a Book</a>
-                                <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<IssueBook setPage={setPage} />)}>Issued Books</a>
+                                <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<IssueBook setPage={setPage} />)}>Issued Book</a>
+                                <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<IssueBook_details setPage={setPage} />)}>Issue book </a>
 
                                 <a class="nav-link" href="logout.php">Logout</a>
     
@@ -95,7 +95,7 @@ const Mainpage = () => {
                     <footer class="py-4 bg-light mt-auto">
                         <div class="container-fluid px-4">
                             <div class="d-flex align-items-center justify-content-between small">
-                                <div class="text-muted">Copyright © Library Management System 2022</div>
+                                <div class="text-muted">Copyright © SKCET-IT</div>
                                 <div>
                                     <a href="#">Privacy Policy</a>
                                     

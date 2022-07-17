@@ -1,6 +1,6 @@
 import React from "react";
 
-
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { db } from "../utils/firebase";
 import { deleteDoc, doc } from "firebase/firestore";
 import Book from "./Book";
@@ -31,7 +31,7 @@ const ReadOnlyBook = (props) => {
       <td>{props.book.data.ISBN}</td>
       <td>{props.book.data.No_of_copies}</td>
       <td>
-        <button
+        <button class="btn btn-light"
           onClick={() =>
             props.handleEdit(
               props.book.id,
@@ -51,7 +51,7 @@ const ReadOnlyBook = (props) => {
        
       </td>
       <td>  
-      <button onClick={()=>handleDelete(props.book.id)}>delete</button>      </td>
+      <button onClick={()=>handleDelete(props.book.id)}>delete</button></td>
     </tr>
   );
 };
