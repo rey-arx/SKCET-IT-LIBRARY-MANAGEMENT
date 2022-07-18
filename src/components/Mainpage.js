@@ -1,6 +1,6 @@
 import React , {useState} from 'react'
 import Forms from './Forms'
-import './stylesmain.css' 
+import './stylesmain.css' ;
 import Dashboard from './Dashboard';
 import IssueBook from './IssueBook';
 import Addbook from './Addbook';
@@ -12,7 +12,6 @@ import {Helmet} from "react-helmet";
 import navlogo from './lines.png';
 import IssueBook_details from './IssueBook_details';
 import { auth } from '../utils/firebase';
-
 const Mainpage = () => {
     const [page,setPage] = useState(<Dashboard />)
 
@@ -32,8 +31,7 @@ const Mainpage = () => {
         }
         
     }
-
-
+ 
   return (
     <div class={visiblesidebar}>
         
@@ -70,7 +68,6 @@ const Mainpage = () => {
                     <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                         <div class="sb-sidenav-menu">
                             <div class="nav">
-                                <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<Category />)}>Category</a>
                                 <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<Author />)}>Author</a>
                                 <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<Rack />)}>Location Rack</a>
                                 <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<Book setPage={setPage} />)}>Book</a>
@@ -78,7 +75,7 @@ const Mainpage = () => {
                                 <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<IssueBook setPage={setPage} />)}>Issued Book</a>
                                 <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<IssueBook_details setPage={setPage} />)}>Issue book </a>
 
-                                <a class="nav-link" href="/" onClick={()=> auth.signOut()} >Logout</a>
+                                <a class="nav-link" href="/" onClick={()=> auth.signOut()}>Logout</a>
     
                             </div>
                         </div>

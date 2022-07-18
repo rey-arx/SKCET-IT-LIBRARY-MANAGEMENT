@@ -14,6 +14,8 @@ const Dashboard = (props) => {
   const [locationlist,setlocationlist]=useState([]);
   const [returnedbooklist,setreturnedbooklist]=useState([]);
   const [totalfine,settotalfine] = useState(0);
+  const [totalCategory,settotalCategory] = useState([]);
+
 
 
 
@@ -35,6 +37,14 @@ const Dashboard = (props) => {
 		ldata: doc.data().Location_rack,
 	  }))
 	  );
+
+	  //Category list
+	  settotalCategory(querySnapshot.docs.map((doc)=>({
+		ldata: doc.data().Category,
+	  }))
+	  );
+
+
 
 
     });
@@ -89,6 +99,15 @@ useEffect(() => {
    const uniquerack=[...new Set(locationlist2)];
    //author count ends here
 
+   //for category
+   const totalCategory2 = [];
+   totalCategory.map((d) => totalCategory2.push(d.ldata));
+   const uniqueCategory=[...new Set(totalCategory2)];
+
+
+
+   //for category ends here
+
 
   //count for returned book and not returned book list
    let returned=0;
@@ -115,11 +134,9 @@ useEffect(() => {
 	total=total + parseInt(totalfine[i].fdata);
 	
   }
-  console.log(total);
-
-
-
   //finding total fine details ends here
+
+
 
 
 
@@ -128,18 +145,18 @@ useEffect(() => {
 
   return <div>
     <div class="container-fluid py-4">
-	<h1 class="mb-5">Dashboard</h1>
+	<h1 class="mb-5" style={{color:"black"}}>Dashboard</h1>
 	<div class="row">
 		<div class="col-xl-3 col-md-6">
-			<div class="card bg-primary text-white mb-4">
-				<div class="card-body">
+			<div style={{backgroundColor :"#363062"}} class="card text-white mb-4">
+				<div  class="card-body">
 					<h1 class="text-center">{TotalIssuebook}</h1>
 					<h5 class="text-center">Total Book Issue</h5>
 				</div>
 			</div>
 		</div>
 		<div class="col-xl-3 col-md-6">
-			<div class="card bg-warning text-white mb-4">
+			<div style={{backgroundColor :"#A5C9CA"}} class="card  text-white mb-4">
 				<div class="card-body">
 					<h1 class="text-center">{returned}</h1>
 					<h5 class="text-center">Total Book Returned</h5>
@@ -147,7 +164,7 @@ useEffect(() => {
 			</div>
 		</div>
 		<div class="col-xl-3 col-md-6">
-			<div class="card bg-danger text-white mb-4">
+			<div style={{backgroundColor :"#E7F6F2"}} class="card  text-white mb-4">
 				<div class="card-body">
 					<h1 class="text-center">{notreturned}</h1>
 					<h5 class="text-center">Total Book Not Return</h5>
@@ -155,7 +172,7 @@ useEffect(() => {
 			</div>
 		</div>
 		<div class="col-xl-3 col-md-6">
-			<div class="card bg-success text-white mb-4">
+			<div style={{backgroundColor :"#395B64"}} class="card  text-white mb-4">
 				<div class="card-body">
 					<h1 class="text-center"><span >₹ {total}</span></h1>
 					<h5 class="text-center">Total Fines Received</h5>
@@ -163,7 +180,7 @@ useEffect(() => {
 			</div>
 		</div>
 		<div class="col-xl-3 col-md-6">
-			<div class="card bg-success text-white mb-4">
+			<div style={{backgroundColor :"#395B64"}} class="card  text-white mb-4">
 				<div class="card-body">
 					<h1 class="text-center">{TotalBook}</h1>
 					<h5 class="text-center">Total Book</h5>
@@ -171,7 +188,7 @@ useEffect(() => {
 			</div>
 		</div>
 		<div class="col-xl-3 col-md-6">
-			<div class="card bg-danger text-white mb-4">
+			<div style={{backgroundColor :"#395B64"}} class="card  text-white mb-4">
 				<div class="card-body">
 					<h1 class="text-center">{uniqueAuthor.length}</h1>
 					<h5 class="text-center">Total unique Author</h5>
@@ -179,15 +196,15 @@ useEffect(() => {
 			</div>
 		</div>
 		<div class="col-xl-3 col-md-6">
-			<div class="card bg-warning text-white mb-4">
+			<div style={{backgroundColor :"#395B64"}} class="card  text-white mb-4">
 				<div class="card-body">
-					<h1 class="text-center">0</h1>
+					<h1 class="text-center">{uniqueCategory.length}</h1>
 					<h5 class="text-center">Total Category</h5>
 				</div>
 			</div>
 		</div>
 		<div class="col-xl-3 col-md-6">
-			<div class="card bg-primary text-white mb-4">
+			<div style={{backgroundColor :"#395B64"}} class="card  text-white mb-4">
 				<div class="card-body">
 					<h1 class="text-center">{uniquerack.length}</h1>
 					<h5 class="text-center">Total Location Rack</h5>
