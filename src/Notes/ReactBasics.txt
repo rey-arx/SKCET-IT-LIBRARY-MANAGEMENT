@@ -1,0 +1,3 @@
+CONDITIONAL RENDERING
+    WE CAN USE SAME CONDITIONAL STATEMENTS FOR REACT LIKE JS
+    example of conditional statement with initialising of variable and routing is given in mybutton and shopping main
